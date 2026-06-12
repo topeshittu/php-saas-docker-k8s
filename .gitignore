@@ -1,0 +1,16 @@
+.DS_Store
+
+# Odoo
+
+*.log
+
+# Local files
+
+.env
+
+# Python
+
+**pycache**/
+*.pyc
+
+

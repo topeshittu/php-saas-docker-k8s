@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: postifyhq
+  name: postifyhq
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: postifyhq
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: postifyhq
+    spec:
+      containers:
+      - image: topeshittu/postifyhq:v1
+        name: postifyhq
+	ports:
+	  - containerPort: 80
+        resources: {}
+status: {}

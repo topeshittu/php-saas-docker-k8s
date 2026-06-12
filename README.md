@@ -1,4 +1,4 @@
-# PostifyHQ Docker Deployment
+PHP SaaS → Docker → Docker Hub → Kubernetes Deployment
 
 Containerization and deployment of a PHP/MySQL SaaS application using Docker and Docker Compose.
 
@@ -90,4 +90,68 @@ Responsible for:
 Successfully transformed a SaaS application into a portable Docker deployment that can be deployed consistently across multiple environments.
 
 This project represents a practical implementation of modern application packaging and deployment practices.
+
+## Kubernetes Deployment Extension
+
+After containerizing the PHP SaaS application and publishing the image to Docker Hub, I deployed the application to Kubernetes using Minikube.
+
+### What Was Implemented
+
+* Created Kubernetes Pod manifests.
+* Deployed custom Docker images to Kubernetes.
+* Configured image pulls from Docker Hub.
+* Tested both public and private container registries.
+* Created Kubernetes ImagePullSecrets for private repository authentication.
+* Implemented Kubernetes Deployments with multiple replicas.
+* Verified ReplicaSet self-healing behavior.
+* Accessed applications using kubectl port-forward.
+* Explored Deployment → ReplicaSet → Pod relationships.
+
+### Kubernetes Architecture
+
+Docker Hub (Private Repository)
+↓
+Kubernetes Deployment
+↓
+ReplicaSet
+↓
+3 Running Pods
+
+### Key Commands Used
+
+Generate Deployment YAML:
+
+```bash
+kubectl create deployment postifyhq \
+  --image=topeshittu/postifyhq:v1 \
+  --replicas=3 \
+  --dry-run=client -o yaml > deployment.yaml
+```
+
+Deploy to Kubernetes:
+
+```bash
+kubectl apply -f deployment.yaml
+```
+
+Access application:
+
+```bash
+kubectl port-forward pod/postifyhq 8081:80
+```
+
+### Skills Demonstrated
+
+* Docker
+* Docker Hub
+* Kubernetes
+* Minikube
+* Deployments
+* ReplicaSets
+* Pods
+* ImagePullSecrets
+* Container Networking
+* Application Troubleshooting
+* Infrastructure as Code (YAML)
+
 

@@ -1,16 +1,26 @@
+# macOS
 .DS_Store
 
-# Odoo
+# IDEs
+.vscode/
+.idea/
 
+# Environment files
+.env
+.env.*
+
+# Logs
 *.log
 
-# Local files
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
 
-.env
+# Kubernetes secrets
+secrets.yaml
+secret.yaml
 
-# Python
-
-**pycache**/
-*.pyc
-
-
+# Temporary files
+tmp/
+temp/
